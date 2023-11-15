@@ -85,7 +85,7 @@
         @media (max-width: 767.98px) {
             img.portrait {
                 display: block;
-                max-width: 300px;
+                max-width: 500px;
                 margin: auto;
             }
         }
@@ -125,6 +125,15 @@
         }
 
         #news-more {
+            display: none;
+        }
+
+        .award {
+            font-size: 15px;
+            margin-bottom: 0px;
+        }
+
+        #award-more {
             display: none;
         }
 
@@ -210,7 +219,7 @@
                     Scholar</a></li>
             <li class="list-inline-item"><a href="https://github.com/mashuaiwudi">Github</a></li>
             <li class="list-inline-item"><a href="mailto:shuai.ma@connect.ust.hk">Email</a></li>
-            <!-- <li class="list-inline-item"><a href="https://hilab.dev/">HiLab</a></li> -->
+            <li class="list-inline-item"><a href="https://twitter.com/shuaima_hci">Twitter</a></li>
         </ul>
         <div class="clearfix"></div>
         <hr>
@@ -224,13 +233,14 @@
 				 </p> -->
 			
                 <p>
-					Hi, this is Shuai. I am a PhD candidate in HCI Lab at <a href="https://hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a>. I'm fortunate to be advised by <a href="https://www.cse.ust.hk/~mxj/">Prof. Xiaojuan Ma</a>. Previously, I was trained in HCI (my master's degree) from the HCI lab of Chinese Academy of Science, supervised by Prof. Feng Tian. I also luckily worked with <a href="https://lcs.ios.ac.cn/~xiangmin/">Prof. Xiangmin Fan (Chinese Academy of Science, China)</a>, <a href="https://www.dakuowang.com/">Prof. Dakuo Wang (Northeastern University, USA)</a>, <a href="https://mingyin.org/">Prof. Ming Yin (Purdue University, USA)</a>.
-                    <br><br>My research interest focuses on improving human-AI interaction experience with human-centered design. My previous work targets personalization, transparency, trust, and adaptability issues when humans interact with AI agents/systems.
+					Hi, this is Shuai. I am a PhD candidate in HCI Lab at <a href="https://hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a>. I'm fortunate to be advised by <a href="https://www.cse.ust.hk/~mxj/">Prof. Xiaojuan Ma</a>. 
+                    <!-- Previously, I was trained in HCI (my master's degree) from the HCI lab of Chinese Academy of Science, supervised by <a href="https://people.ucas.ac.cn/~fengt">Prof. Feng Tian</a>. I also luckily worked with <a href="https://lcs.ios.ac.cn/~xiangmin/">Prof. Xiangmin Fan (Chinese Academy of Science, China)</a>, <a href="https://www.dakuowang.com/">Prof. Dakuo Wang (Northeastern University, USA)</a>, <a href="https://mingyin.org/">Prof. Ming Yin (Purdue University, USA)</a>. -->
+                    <br><br>My research interest focuses on improving human-AI interaction experience with human-centered design. My previous work targets trust calibration, personalization, transparency, and adaptability issues when humans interact with AI agents/systems.
                     <ul>
                         
-                        <li>In the theoretical part, I focus on improving human-AI collaboration by designing transparent communication mechanisms between humans and AI and promoting <b>humans' appropriate reliance on AI's recommendations</b> (e.g., trust calibration). I have designed computational models and run empirical studies to understand <b>users' mental models in human-AI collaboration</b> (e.g., in AI‑assisted decision‑making and machine/robot teaching).</li>
+                        <li>In the theoretical part, I focus on improving human-AI collaboration by <b>designing transparent communication mechanisms</b> between humans and AI and <b>promoting humans' appropriate reliance on AI's recommendations</b> (e.g., trust calibration). I have designed computational models (user preference modeling, user capability modeling) and run empirical studies to <b>understand users' mental models in human-AI collaboration</b> (e.g., in AI‑assisted decision‑making and machine/robot teaching).</li>
                         <br>
-                        <li>In the application part, I adopt <b>human-centric design</b> to develop AI-empowered tools to assist users in <b>solving real-world problems</b> in various domains, such as Education (e.g., MOOC learning, online classes), Work (e.g., photo-taking, video-editing), and Healthcare (e.g., Parkinson’s disease detection, online health community support).</li>
+                        <li>In the application part, I adopt <b>human-centric design</b> to develop AI-empowered tools to assist users in <b>solving real-world problems</b> in various domains, such as Education (e.g., MOOC learning, online classes), Work (e.g., photo-taking, video-editing), and Healthcare (e.g., Parkinson's disease detection, online health community support).</li>
                         
                     </ul>
                     
@@ -246,7 +256,7 @@
 			 
             </div>
             <div class="offset-xl-2 col-lg-3 col-md-3">
-                <img src="./personal_webpage_files/portrait6.jpg" class="portrait" alt="a portrait of shuai ma">
+                <img src="./personal_webpage_files/Me.jpg" class="portrait" alt="a portrait of shuai ma">
             </div>
         </div>
 
@@ -256,7 +266,7 @@
             <!-- left column -->
             <div class="col-lg-8 mb-2">
                 <h2>
-                    Selected Publications
+                    Selected Publications <font style="font-size: 15px;">(Full publications can be viewed through Google Scholar)</font>
 					<!--
                     <div class="float-right">
                         <small class="ml-2">by category</small>
@@ -286,7 +296,7 @@
 							Who Should I Trust: AI or Myself? Leveraging Human and AI Correctness Likelihood to Promote Appropriate Trust in AI-Assisted Decision-Making
                         </h6>
                         <p class="text-muted">
-                            <b>Shuai Ma</b>, Ying Lei, Xinru Wang, Chengbo Zheng, Chuhan Shi, Ming Yin, Xiaojuan Ma. (CHI 2023)<br>
+                            <b><u>Shuai Ma</u></b>, Ying Lei, Xinru Wang, Chengbo Zheng, Chuhan Shi, Ming Yin, Xiaojuan Ma. (CHI 2023)<br>
 
                             <a class="info", href="./personal_webpage_files/paper_pdf/human_AI_CL.pdf">[PDF]</a>
                             <a class="info", href="https://github.com/mashuaiwudi/mashuaiwudi.github.io/tree/master/HAIcollaboration">[Code]</a>
@@ -296,6 +306,67 @@
                        
                         <p>
 							We proposed to promote humans' appropriate trust based on the correctness likelihood of both sides at a task-instance level. Results from a between-subjects experiment (N=293) showed that our CL exploitation strategies promoted more appropriate human trust in AI, compared with only using AI confidence.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>
+
+                <div class="row research-project" data-sort="2023">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/retrolens.png">
+						   <!-- <source type="video/mp4" src="/research/MorphingCircuit/thumbnail.mp4">
+						   <source type="video/webm" src="/research/MorphingCircuit/thumbnail.webm"> -->
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							RetroLens: A Human-AI Collaborative System for Multi-step Retrosynthetic Route Planning
+                        </h6>
+                        <p class="text-muted">
+                            Chuhan Shi, Yicheng Hu, Shenan Wang, <b><u>Shuai Ma</u></b>, Chengbo Zheng, Xiaojuan Ma, Qiong Luo. (CHI 2023)<br>
+
+							<!-- <a class="info" href="https://vimeo.com/394833754">[Video]</a> -->
+                            <!-- <a class="info" href="https://dl.acm.org/doi/abs/10.1145/3432232">[DOI]</a> -->
+                            <a class="info", href="./personal_webpage_files/paper_pdf/RetroLens.pdf">[PDF]</a>
+                        </p>
+                       
+                        <p>
+							Targeting Multi-step Human-AI Collaboration task for chemists, we proposed a human-AI collaborative system, RetroLens, through a participatory design process. AI can contribute by two approaches: joint action and algorithm-inthe-loop.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>
+
+                <div class="row research-project" data-sort="2023">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/aeser.png">
+						   <!-- <source type="video/mp4" src="/research/MorphingCircuit/thumbnail.mp4">
+						   <source type="video/webm" src="/research/MorphingCircuit/thumbnail.webm"> -->
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							Competent but Rigid: Identifying the Gap in Empowering AI to Participate Equally in Group Decision-Making
+                        </h6>
+                        <p class="text-muted">
+                            Chengbo Zheng, Yuheng Wu, Chuhan Shi, <b><u>Shuai Ma</u></b>, Jiehui Luo, Xiaojuan Ma. (CHI 2023)<br>
+
+							<!-- <a class="info" href="https://vimeo.com/394833754">[Video]</a> -->
+                            <!-- <a class="info" href="https://dl.acm.org/doi/abs/10.1145/3432232">[DOI]</a> -->
+                            <a class="info", href="./personal_webpage_files/paper_pdf/Competent but Rigid.pdf">[PDF]</a>
+                        </p>
+                       
+                        <p>
+							What will happen if AI participate equally in human group decision-making? We find that although the voice of AI is considered valuable, AI still plays a secondary role in the group because it cannot fully follow the dynamics of the discussion and make progressive contributions. Moreover, the divergent opinions
+                            of our participants regarding an "equal AI" shed light on the possible future of human-AI relations.
                         </p>
                     </div>
 					
@@ -318,7 +389,7 @@
 							Modeling Adaptive Expression of Robot Learning Engagement and Exploring its Effects on Human Teachers
                         </h6>
                         <p class="text-muted">
-                            <b>Shuai Ma</b>, Mingfei Sun, Xiaojuan Ma. (TOCHI 2022)<br>
+                            <b><u>Shuai Ma</u></b>, Mingfei Sun, Xiaojuan Ma. (TOCHI 2022)<br>
                             <a class="info", href="./personal_webpage_files/paper_pdf/LearningEngagement.pdf">[PDF]</a>
                             <a class="info", href="https://github.com/mashuaiwudi/mashuaiwudi.github.io">[Code]</a>
                             <a class="info", href="https://userstudy.link/">[Live Demo]</a>
@@ -350,7 +421,7 @@
 							Glancee: An Adaptable System for Instructors to Grasp Student Learning Status in Synchronous Online Classes
                         </h6>
                         <p class="text-muted">
-                            <b>Shuai Ma</b>, Taichang Zhou, Fei Nie, Xiaojuan Ma. (CHI 2022)<br>
+                            <b><u>Shuai Ma</u></b>, Taichang Zhou, Fei Nie, Xiaojuan Ma. (CHI 2022)<br>
 
 							<!-- <a class="info" href="https://vimeo.com/394833754">[Video]</a> -->
                             <!-- <a class="info" href="https://dl.acm.org/doi/abs/10.1145/3432232">[DOI]</a> -->
@@ -369,6 +440,9 @@
 						<hr class="dash">
 					</div>
                 </div>
+
+
+
 
                 <!-- <div class="row research-project" data-sort="2019">
                     <div class="col-md-4">
@@ -424,10 +498,12 @@
 				<br/>
 				
 				
-                <h2>Teaching Assistant Service</h2>
+                <h2>Teaching</h2>
                 <ul class="news" style="font-size: 13px">
-					<li>2021-2022 Fall COMP 1021 - Introduction to Computer Science</li>
-					<li>2020-2021 Spring COMP 1021 - Introduction to Computer Science</li>
+					<li>2021-2022 Fall COMP 1021 - Introduction to Computer Science (TA, @HKUST)</li>
+					<li>2020-2021 Spring COMP 1021 - Introduction to Computer Science (TA, @HKUST)</li>
+                    <li>2018-2019 Introduction to Natural User Interfaces (Lecturer, @Beijing Zhongguancun No.1 Primary School)</li>
+                    <li>2018 Introduction to Natural User Interfaces (Lecturer, @Beijing Science and Innovation Open Day)</li>
                 </ul>
 				<br>
 				
@@ -442,25 +518,23 @@
                     <br>
                     (1) (2) <i class="fa-solid fa-medal"></i>received Special Recognition for Outstanding Reviews for CHI 2023, CHI 2024
                     <br>
-                    (3) (4) <i class="fa-solid fa-medal"></i>received Student Volunteer Award for CHI 2023, CHI 2022
+                    (3) (4) <i class="fa-solid fa-medal"></i>received Student Volunteer Award for CHI 2022, CHI 2023
 				</p>
 
                 <h2>Awards</h2>
-
-                
-                <ul class="news" style="font-size: 13px">
-                    <li>2023 Overseas Research Awards</li>
+                <ul class="award" style="font-size: 13px">
+                    <li>2023 HKUST PhD Overseas Research Award</li>
                     <li>2020 HKUST Redbird PhD Scholarship</li>
 					<li>2019 CHI Honorable Mention Award</li>
-					<li>2019 President Scholarship in Chinese Academy of Sciences</li>
-					<li>2018 National Scholarship for Graduate</li>
-                </ul>
-                <!-- <ul class="news" id="award-more" style="font-size: 13px">
-                    
-					<li>2018 Pacemaker of Merit Student of UCAS (1%)</li>
+					<li>2019 President Scholarship in Chinese Academy of Sciences (中科院院长奖学金, in Chinese, 1%)</li>
+					<li>2018 National Scholarship for Graduate (研究生国家奖学金, in Chinese, 1%)</li>
                     <li>2018 <b>Winner</b> of Huawei Cup Free Software Programming Competition</li>
 					<li>2017 Excellence Award for Science Creation Program of Chinese Academy of Sciences</li>
-					<li>2017 Special Scholarship for Undergraduates & the best ten students of HIT (0.1%)</li>
+					<li>2017 Special Scholarship for Undergraduates (本科生特奖, in Chinese, 0.1%)</li>
+                    <li>2016 National Scholarship for Undergraduate (本科生国家奖学金, in Chinese, 1%)</li>
+                </ul>
+                <ul class="award" id="award-more" style="font-size: 13px">
+					<li>2018 Pacemaker of Merit Student of UCAS (1%)</li>
 					<li>2017 Excellent Graduates in Harbin Institute of Technology</li>
 					<li>2016 National Scholarship for Undergraduate (1%)</li>
                     <li>2016 Pacemaker of Merit Student of HIT (0.1%)</li>
@@ -468,7 +542,7 @@
                     <li>2016 <b>Winner</b> of The 5th National Marine Vehicle Design and Manufacturing Competition</li>
                     <li>2016 <b>Winner</b> of The 18th National Robot Championship</li>
                 </ul>
-                <a id="toggle-more-award" href="#">More &gt;</a> -->
+                <a id="toggle-more-award" href="#">More &gt;</a>
 
 
 				<br>
@@ -491,6 +565,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/1b68509e26.js" crossorigin="anonymous"></script>
 <script>
+
+    $('#toggle-more-award').click(function () {
+        $('#award-more').slideToggle();
+        $('#award-more').is(':visible') ? $(this).text('< Hide') : $(this).text('More >');
+        return false;
+    });
 
     $('#toggle-more-news').click(function () {
         $('#news-more').slideToggle();
@@ -515,24 +595,6 @@
         });
     });
 
-    var researchProjects = $('.research-projects').html();
-
-    var researchProjectsSorted = $('div.research-project').sort(function (a, b) {
-        var contentA = $(a).attr('data-sort');
-        var contentB = $(b).attr('data-sort');
-        return (contentA < contentB) ? 1 : (contentA > contentB) ? -1 : 0;
-    });
-
-    $('.sort-by-date').click(function () {
-        $(this).toggleClass('active');
-        if ($(this).hasClass('active')) {
-            $('.research-projects').html(researchProjects);
-        } else {
-            $('.research-projects').html(researchProjectsSorted);
-        }
-    });
-	
-	
 
     document.querySelectorAll('.email-anchor').forEach(function(a) {
         a.href = 'mailto:' + ['shuai.ma', 'connect.ust.hk'].join('@');
