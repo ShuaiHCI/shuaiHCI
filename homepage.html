@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Shuai Ma is a PhD student at HKUST">
+    <title>Shuai Ma (马帅)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: lighter;
+        }
+
+        a {
+            color: black;
+            border-bottom: 1px dotted black;
+        }
+
+        a:hover,
+        a:active {
+            color: #2774AE;
+            text-decoration: none;
+        }
+
+        h1 a {
+            color: #6B747C;
+            border: none;
+        }
+
+        .strong {
+            color: #2774AE;
+        }
+
+        .social-icons {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .social-icons li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        .social-icons li a {
+            color: #000;
+        }
+
+        .social-icons li a:hover {
+            color: #2774AE;
+        }
+
+        img.portrait {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-buttons button {
+            background-color: #2774AE;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .filter-buttons button:hover {
+            background-color: #195f80;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .research-project img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .dash {
+            border-top: 1px dashed #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container">
+        <h1 class="float-md-left mb-0">
+            <a href="https://shuaima.cc/">Shuai Ma (马帅)</a>
+        </h1>
+        <ul class="list-inline float-md-right social-icons">
+            <li class="list-inline-item"><a href="https://scholar.google.com/citations?hl=en&user=qajd8BYAAAAJ"><i class="fab fa-google"></i></a></li>
+            <li class="list-inline-item"><a href="https://github.com/mashuaiwudi"><i class="fab fa-github"></i></a></li>
+            <li class="list-inline-item"><a href="mailto:shuai.ma@connect.ust.hk"><i class="fas fa-envelope"></i></a></li>
+            <li class="list-inline-item"><a href="https://twitter.com/shuaima_hci"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+        <div class="clearfix"></div>
+        <hr>
+    </header>
+
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-8">
+                <p>
+                    Hey, this is Shuai. I am a PhD candidate in HCI Lab at <a href="https://hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a>. I'm fortunate to be advised by <a href="https://www.cse.ust.hk/~mxj/">Prof. Xiaojuan Ma</a>.
+                    <br><br>My research goal is to design human-centered interactive systems that users can easily understand and use, appropriately rely on, and effectively collaborate with.
+                </p>
+                <ul>
+                    <li>In the method part, I have developed <b>computational models</b> to understand target users (e.g., modeling their preferences, and capabilities) allowing the designed system to adapt to individual users to boost task performance and user experience. Specifically, I designed novel interaction methods to promote humans' appropriate reliance on algorithms' not always perfect suggestions.</li>
+                    <li>In the application part, I leveraged theories from cognitive science and social science, and adopted a human‑centered design to develop interactive systems to assist users in solving real‑world problems in various domains, including <b>Decision Making</b>, <b>Education & Learning</b>, <b>Work & Creation</b>, <b>Healthcare & Wellbeing</b>.</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <img src="./personal_webpage_files/Me.jpg" class="portrait" alt="a portrait of Shuai Ma">
+            </div>
+        </div>
+
+        <div class="row taxonomy">
+            <div class="col-lg-12 mb-3">
+                <img src="./personal_webpage_files/research_chart.png" alt="Research Chart">
+            </div>
+        </div>
+
+        <h2>News</h2>
+        <ul>
+            <li><span class="strong">June 2024:</span> Our paper on human self-confidence calibration in AI-assisted decision-making was accepted at CHI 2024.</li>
+            <li><span class="strong">May 2024:</span> Presented our latest research on human-AI collaboration at the ACM CHI 2024 conference.</li>
+            <li><span class="strong">April 2024:</span> Joined the HCI Lab at HKUST as a PhD candidate under the supervision of Prof. Xiaojuan Ma.</li>
+        </ul>
+
+        <h2>Selected Publications <small>(Full publications can be viewed through Google Scholar)</small></h2>
+        <div class="filter-buttons">
+            <button onclick="filterPublications('All')">All</button>
+            <button onclick="filterPublications('Decision Making')">Decision Making</button>
+            <button onclick="filterPublications('Education')">Education</button>
+            <button onclick="filterPublications('Wellbeing')">Wellbeing</button>
+            <button onclick="filterPublications('Work')">Work & Creation</button>
+        </div>
+
+        <div class="research-projects">
+            <div class="row research-project" data-category="Decision Making,Human-AI Collaboration,All">
+                <div class="col-md-4">
+                    <video loop muted playsinline poster="./personal_webpage_files/paper_teaser/calibration.png"></video>
+                </div>
+                <div class="col-md-8">
+                    <h6>"Are You Really Sure?'' Understanding the Effects of Human Self-Confidence Calibration in AI-Assisted Decision Making</h6>
+                    <p class="text-muted">
+                        <b><u>Shuai Ma</u></b>, Xinru Wang, Ying Lei, Chuhan Shi, Ming Yin, Xiaojuan Ma. (CHI 2024)
+                        <a class="info" href="./personal_webpage_files/paper_pdf/self_confidence_calibration.pdf">[PDF]</a>
+                    </p>
+                    <p>This paper investigates human self-confidence calibration in AI-assisted decision-making, conducting three user studies to analyze its effect on human-AI collaboration. The research examines the impact of self-confidence on AI reliance and tests three calibration mechanisms. Findings indicate that proper self-confidence calibration improves rational behavior and appropriate reliance in human-AI teams, offering insights into enhancing collaboration efficiency.</p>
+                </div>
+            </div>
+            <hr class="dash">
+
+            <!-- More research projects go here -->
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function filterPublications(category) {
+            const projects = document.querySelectorAll('.research-project');
+            projects.forEach(project => {
+                if (category === 'All' || project.dataset.category.includes(category)) {
+                    project.style.display = 'flex';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

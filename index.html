@@ -60,22 +60,22 @@
             }
         }
 
-        ul.social-icons {
-            font-size: 1rem;
-            margin-top: 24px;
-            margin-bottom: 0;
+        .social-icons {
+            font-size: 1.5rem;
+            margin-top: 10px;
         }
 
-        ul.social-icons li::before {
-            content: '[';
+        .social-icons li {
+            display: inline;
+            margin-right: 15px;
         }
 
-        ul.social-icons li::after {
-            content: ']';
+        .social-icons li a {
+            color: #000;
         }
 
-        ul.social-icons li a {
-            border: none;
+        .social-icons li a:hover {
+            color: #2774AE;
         }
 
         img.portrait {
@@ -207,7 +207,7 @@
         }
 
         .filter-buttons button {
-            background-color: #2774AE;
+            background-color: #2773ae97;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -218,7 +218,7 @@
         }
 
         .filter-buttons button:hover {
-            background-color: #195f80;
+            background-color: #195f804d;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
@@ -238,12 +238,10 @@
             <a href="https://shuaima.cc/">Shuai Ma (马帅)</a>
         </h1>
         <ul class="list-inline float-md-right social-icons">
-            <!-- <li class="list-inline-item"><a href="./personal_webpage_files/cv.pdf">CV/Resume</a></li> -->
-            <li class="list-inline-item"><a href="https://scholar.google.com/citations?hl=en&user=qajd8BYAAAAJ">Google
-                    Scholar</a></li>
-            <li class="list-inline-item"><a href="https://github.com/mashuaiwudi">Github</a></li>
-            <li class="list-inline-item"><a href="mailto:shuai.ma@connect.ust.hk">Email</a></li>
-            <li class="list-inline-item"><a href="https://twitter.com/shuaima_hci">Twitter</a></li>
+            <li class="list-inline-item"><a href="https://scholar.google.com/citations?hl=en&user=qajd8BYAAAAJ"><i class="fab fa-google"></i></a></li>
+            <li class="list-inline-item"><a href="https://github.com/mashuaiwudi"><i class="fab fa-github"></i></a></li>
+            <li class="list-inline-item"><a href="mailto:shuai.ma@connect.ust.hk"><i class="fas fa-envelope"></i></a></li>
+            <li class="list-inline-item"><a href="https://twitter.com/shuaima_hci"><i class="fab fa-twitter"></i></a></li>
         </ul>
         <div class="clearfix"></div>
         <hr>
@@ -314,7 +312,7 @@
             <!-- left column -->
             <div class="col-lg-8 mb-2">
                 <h2>
-                    Selected Publications <font style="font-size: 15px;">(Full publications can be viewed through Google Scholar)</font>
+                    Selected Publications <font style="font-size: 15px;"></font>
 					<!--
                     <div class="float-right">
                         <small class="ml-2">by category</small>
@@ -329,9 +327,9 @@
                     <button onclick="filterPublications('All')">All</button>
                     <button onclick="filterPublications('Decision Making')">Decision Making</button>
                     <button onclick="filterPublications('Education')">Education</button>
-                    <button onclick="filterPublications('Wellbeing')">Wellbeing</button>
+                    <button onclick="filterPublications('Wellbeing')">Healthcare & Wellbeing</button>
                     <button onclick="filterPublications('Work')">Work & Creation</button>
-                    <!-- <button onclick="filterPublications('Human-AI Collaboration')">Human-AI Collaboration</button> -->
+                    <button onclick="filterPublications('Human-AI Collaboration')">Human-AI Collaboration</button>
                 </div>
 
                 <div class="research-projects">
@@ -340,7 +338,79 @@
                     <h3>Please refer to <a href="https://www.hilab.dev/">HiLab's webpage</a> for more recent work (after 01/01/2021)</h3>
                 </div> -->
 
-                
+                <div class="row research-project" data-sort="2023" data-category = "Decision Making,Human-AI Collaboration">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/deliberation.png">
+						   <!-- <source type="video/mp4" src="/research/MorphingCircuit/thumbnail.mp4">
+						   <source type="video/webm" src="/research/MorphingCircuit/thumbnail.webm"> -->
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							Towards Human-AI Deliberation: Design and Evaluation of LLM-Empowered Deliberative AI for AI-Assisted Decision-Making
+                        </h6>
+                        <p class="text-muted">
+                            <b><u>Shuai Ma</u></b>, Qiaoyi Chen, Xinru Wang, Chengbo Zheng, Zhenhui Peng, Ming Yin, Xiaojuan Ma. (Working Paper)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/deliberation.pdf">[PDF]</a>
+                            
+                        </p>
+                       
+                        <p>
+							In AI-assisted decision-making, humans often accept or reject AI suggestions passively, facing challenges in analytical engagement and communicating disagreements effectively. 
+                            To tackle this, we propose Human-AI Deliberation, fostering reflective discussion on conflicting opinions. This framework involves dimension-level opinion elicitation, deliberative discussion, and updates, guided by human deliberation theories. 
+                            Deliberative AI, utilizing large language models, enhances interactions between humans and domain-specific models, improving decision-making such as in graduate admissions. 
+                            Evaluation shows Deliberative AI outperforms traditional explainable AI assistants, enhancing reliance and task performance, informing future AI-assisted decision tool designs.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>
+
+                <div class="row research-project" data-sort="2023" data-category = "Decision Making,Human-AI Collaboration">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/role.png">
+						   <!-- <source type="video/mp4" src="/research/MorphingCircuit/thumbnail.mp4">
+						   <source type="video/webm" src="/research/MorphingCircuit/thumbnail.webm"> -->
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							Beyond Recommender: An Exploratory Study of the Effects of Different AI Roles in AI-Assisted Decision Making
+                        </h6>
+                        <p class="text-muted">
+                            <b><u>Shuai Ma</u></b>, Chenyi Zhang, Xinru Wang, Xiaojuan Ma, Ming Yin. (Working Paper)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/role.pdf">[PDF]</a>
+                            
+                        </p>
+                       
+                        <p>
+							AI is often used as a Recommender in decision-making, but this can reduce human analytical thinking and cause over-reliance on AI. 
+                            Unlike AI, human advisors play diverse roles in decisions. This paper examines three AI roles—Recommender, Analyzer, and Devil’s Advocate—at two performance levels. 
+                            Results show each role's unique strengths and weaknesses in task performance, reliance, and user experience. 
+                            Notably, the Analyzer role can be more effective than the Recommender when AI performance is low. These findings inform the design of adaptive AI assistants.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="row research-project" data-sort="2023" data-category = "Decision Making,Human-AI Collaboration,All">
                     <div class="col-md-4">
                        <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/calibration.png">
@@ -549,7 +619,7 @@
                 
 
 
-                <div class="row research-project" data-sort="2022" data-category = "Education, Human-AI Collaboration,All">
+                <div class="row research-project" data-sort="2022" data-category = "Education,Human-AI Collaboration,All">
                     <div class="col-md-4">
                        <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/learning_engagement.png">
 						   <!-- <source type="video/mp4" src="/research/MorphingCircuit/thumbnail.mp4">
@@ -669,13 +739,140 @@
                 </div>
 
 
+                <div class="row research-project" data-sort="2019" data-category = "Work,Human-AI Collaboration">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/prescreen.png">
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							Pre-screen: Assisting Material Screening in Early-stage of Video Editing
+                        </h6>
+                        <p class="text-muted">
+                            <b><u>Shuai Ma*</u></b>, Qian Zhu*, Cuixia Ma (UIST 2019 Adjunct)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/prescreen.pdf">[PDF]</a>
+                        </p>
+                        <p>
+							Video editing is challenging for both professionals and amateurs due to the time-consuming task of screening useful clips from raw footage. 
+                            To address these difficulties, we conducted a pilot study involving surveys and interviews with 20 participants. 
+                            Based on our findings, we developed Pre-screen, an innovative tool that offers global and detailed video analysis, as well as intelligent material screening features using advanced video processing and visualization methods.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>  
+
+
+                <div class="row research-project" data-sort="2019" data-category = "Education">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/reminder.png">
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							What Did I Miss? Assisting User-adaptive Missed Content Reviewing in MOOC Learning
+                        </h6>
+                        <p class="text-muted">
+                            <b><u>Shuai Ma*</u></b>, Qian Zhu* (UIST 2019 Adjunct)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/reminder.pdf">[PDF]</a>
+                        </p>
+                        <p>
+							In Massive Open Online Courses (MOOCs), learners often face distractions leading to divided attention (DA). This paper introduces Reminder, a system that detects DA using cameras on PC and mobile devices.
+                             It predicts attention scores with a regression model and adapts to individual users. Reminder also offers visualizations to help learners easily review missed content. 
+                             User studies demonstrate its effectiveness in detecting and assisting learners with missed course content.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>  
+
+
+
+                <div class="row research-project" data-sort="2019" data-category = "Wellbeing">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/workshop.png">
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							Human-AI Interaction in Healthcare: Three Case Studies About How Patient(s) And Doctors Interact with AI in a Multi-Tiers Healthcare Network
+                        </h6>
+                        <p class="text-muted">
+                            Yunzhi Li, Liuping Wang, <b><u>Shuai Ma</u></b>, Xiangmin Fan, Zijun Wang, Junfeng Jiao, Dakuo Wang (CHI 2019 Workshop Paper)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/HealthWorkshopCHI19.pdf">[PDF]</a>
+                        </p>
+                        <p>
+							This position paper introduces three ongoing research projects focused on designing, developing, and evaluating systems for human-AI interaction in healthcare. 
+                            Collaborating with local government administrators, hospitals, clinics, and doctors in a Beijing suburb, we study how AI technologies are transforming healthcare delivery and reception. 
+                            We aim to foster discussion at the workshop and establish collaborations within the health informatics community.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div> 
+
+                <div class="row research-project" data-sort="2019" data-category = "Wellbeing">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/smartphonepd.png">
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							Implicit detection of motor impairment in Parkinson's disease from everyday smartphone interactions
+                        </h6>
+                        <p class="text-muted">
+                            Jing Gao, Feng Tian, Junjun Fan, Dakuo Wang, Xiangmin Fan, Yicheng Zhu, <b><u>Shuai Ma</u></b>, Jin Huang, Hongan Wang. (CHI 2018 LBW)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/smartphonepd.pdf">[PDF]</a>
+                        </p>
+                        <p>
+							In this work, we explored the feasibility and accuracy of detecting motor impairment in Parkinson’s disease (PD) via implicitly sensing and analyzing users’ everyday interactions with their smartphones.
+                            Through a 42 subjects study, our approach achieved an overall accuracy of 88.1% (90.0%/86.4% sensitivity/specificity) in discriminating PD subjects from age-matched healthy controls.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>
+
 
                 
 
-
-                
-
-                
+                <div class="row research-project" data-sort="2019" data-category = "Wellbeing">
+                    <div class="col-md-4">
+                       <video loop="" muted="" playsinline="" poster="./personal_webpage_files/paper_teaser/mirroru.png">
+                       </video>
+					   
+                    </div>
+                    <div class="col-md-8">
+                        <h6>
+							mirrorU: scaffolding emotional reflection via in-situ assessment and interactive feedback
+                        </h6>
+                        <p class="text-muted">
+                            Liuping Wang, Xiangmin Fan, Feng Tian, Lingjia Deng, <b><u>Shuai Ma</u></b>, Jin Huang, Hongan Wang (CHI 2018 LBW)<br>
+                            <a class="info", href="./personal_webpage_files/paper_pdf/mirroru.pdf">[PDF]</a>
+                        </p>
+                        <p>
+							We present mirrorU, a mobile system that supports users to reflect on and write about their daily emotional experience. 
+                            While prior work has focused primarily on providing memory triggers or affective cues, mirrorU provides in-situ assessment and interactive feedback to scaffold reflective writing. 
+                            It automatically and continuously monitors the composition process in three dimensions (i.e., level of detail, overall valence, and cognitive engagement) and provides relevant feedback to support reflection.
+                        </p>
+                    </div>
+					
+					<div class="col-md-12"> 
+						<hr class="dash">
+					</div>
+                </div>                
 
 
 
@@ -688,24 +885,28 @@
 
                 <h2>Latest News</h2>
                 <ul class="news" style="font-size: 13px">
-                    <!-- <li>2024-1-19 | Three papers got conditionally accepted by CHI 2024! Congrats to my co-authors.</li> -->
-                    <li>2024-5 | Passed my PhD thesis proposal defense.</li>
-                    <li>2024-4 | Our paper about Human-AI Collaborative Feature Engineering got accepted by ACM DIS 2024! Congrats to my co-authors.</li>
-                    <li>2024-2 | Start my PC work for FAccT 2024.</li>
-                    <li>2024-2 | Start my AC work for CHI 2024 LBW.</li>
-                    <li>2024-1 | Three papers got accepted by CHI 2024! Congrats to my co-authors.</li>	
-                    <li>2023-11 | Arrived in ETH Zurich. Visiting Prof. Wang's Peach Lab.</li>
-                    <li>2023-4 | Reconnect at CHI! Hamburg.</li>
-                    <li>2023-1 | Happy to be a student volunteer at CHI 2023! See U in Germany.</li>
-                    <li>2023-1 | Start my AC work for CHI 2023 LBW.</li>
-                    <li>2023-1 | Three papers got accepted by CHI 2023! Congrats to my co-authors.</li>	
+
+
+               
+                    <li><span class="strong">May 2024:</span> Passed my PhD thesis proposal defense.</li>
+                    <li><span class="strong">May 2024:</span> Arrived at Hawaii! @CHI 2024</li>
+                    <li><span class="strong">Apr 2024:</span> Our paper about Human-AI Collaborative Feature Engineering got accepted by ACM DIS 2024! Congrats to my co-authors.</li>
+                    <li><span class="strong">Feb 2024:</span> Start my PC work for FAccT 2024.</li>
+                    <li><span class="strong">Feb 2024:</span> Start my AC work for CHI 2024 LBW.</li>
+                    <li><span class="strong">Jan 2024:</span> Three papers got accepted by CHI 2024! Congrats to my co-authors.</li>
+                    <li><span class="strong">Nov 2023:</span> Arrived in ETH Zurich. Visiting Prof. Wang's Peach Lab.</li>
+                    <li><span class="strong">Apr 2023:</span> Reconnect at CHI 2023! @Hamburg.</li>
+                    <li><span class="strong">Jan 2023:</span> Three papers got accepted by CHI 2023! Congrats to my co-authors.</li>
+
+                  
                 </ul>
                 <ul class="news" id="news-more" style="font-size: 13px">
                     
-                    <li>2022-8-5 | Our paper 'Modeling Adaptive Expression of Robot Learning Engagement' has been accepted by TOCHI!</li>
-                    <li>2022-4-19 | I passed my PhD Qualifying Exam and became a PhD candidate! Thanks for my committee members' valuable feedback!</li>
-                    <li>2022-3-10 | Happy to be a student volunteer at CHI 2022!</li>
-                    <li>2022-2-10 | Our paper <i>Glancee</i> is conditionally accepted at CHI 2022.</li>
+
+                    <li><span class="strong">Aug 2022:</span> Our paper 'Modeling Adaptive Expression of Robot Learning Engagement' has been accepted by TOCHI!</li>
+                    <li><span class="strong">Apr 2022:</span> I passed my PhD Qualifying Exam and became a PhD candidate! Thanks for my committee members' valuable feedback!</li>
+                    <li><span class="strong">Mar 2024:</span> Happy to be a student volunteer at CHI 2022!</li>
+                    <li><span class="strong">Feb 2022:</span> Our paper <i>Glancee</i> is conditionally accepted at CHI 2022.</li>
                 </ul>
                 <a id="toggle-more-news" href="#">More &gt;</a>
 				<br/>
@@ -817,6 +1018,6 @@
     }
 }
 
-
+filterPublications('All');
 
 </script>
