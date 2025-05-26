@@ -1,284 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AI-Assisted Income Prediction</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            margin: 40px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-        }
-        .feature-table {
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            width: 100%;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .feature-table th, .feature-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .ai-section {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .ai-section img {
-            width: 60px;
-            margin-right: 20px;
-        }
-        .gauge-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .gauge {
-            width: 200px;
-            height: 100px;
-        }
-        .progress-counter {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #666;
-        }
-        .button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4285f4;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #3367d6;
-        }
-    </style>
-</head>
-<body>
-<h1>AI-Assisted Income Prediction</h1>
-<div class="progress-counter" id="progress"></div>
-<div id="task"></div>
-<button class="button" onclick="submitDecision()">Next</button>
-<div id="results" style="margin-top: 30px;"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const data = [...Array(20).keys()].map((i) => ({
-        age: ['47', '48', '43', '35', '40', '42', '29', '31', '49', '18', '43', '65', '64', '53', '62', '47', '28', '28', '66', '48'][i],
-        education: ['10', '13', '13', '13', '14', '13', '10', '10', '9', '9', '14', '16', '13', '16', '10', '10', '13', '13', '10', '10'][i],
-        marital: ['Divorced', 'Never married', 'Divorced', 'Married civilian spouse', 'Married civilian spouse', 'Married civilian spouse', 'Married civilian spouse', 'Married civilian spouse', 'Divorced', 'Never married', 'Married civilian spouse', 'Married civilian spouse', 'Divorced', 'Divorced', 'Divorced', 'Divorced', 'Married civilian spouse', 'Married civilian spouse', 'Divorced', 'Married civilian spouse'][i],
-        occupation: ['Other service', 'Other service', 'Technical support', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Other service', 'Other service', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Other service', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Executive Managerial', 'Technical support'][i],
-        work_hours: ['44', '40', '40', '50', '40', '50', '40', '40', '35', '20', '50', '40', '55', '55', '45', '65', '50', '46', '55', '40'][i],
-        ai_prediction: ['0', '0', '0', '1', '1', '1', '0', '0', '0', '0', '1', '1', '1', '1', '1', '1', '0', '0', '1', '0'][i],
-        ai_confidence: ['0.6546410965628366', '0.5427767185829253', '0.5562533751241145', '0.5871216878264423', '0.6387295221978367', '0.6698973563579377', '0.8344527883786789', '0.8199350992330239', '0.7931571239311752', '0.9853848982639427', '0.7623585423294087', '0.9342728935728459', '0.9137708543881718', '0.9536063106430439', '0.5416344927098204', '0.6723583557614882', '0.5008906139493214', '0.545105845036236', '0.7757036120388454', '0.8185791486945777'][i],
-        ground_truth: ['0', '0', '0', '1', '1', '1', '0', '0', '0', '0', '1', '1', '1', '1', '0', '0', '1', '1', '0', '1'][i]
-    }));
-
-    let current = 0;
-    let correct = 0;
-    let overReliance = 0;
-    let underReliance = 0;
-    let aiWrong = 0;
-    let aiCorrect = 0;
-    const errorLogs = [];
-
-    function renderTask() {
-        const item = data[current];
-        document.getElementById('progress').innerText = `Task ${current + 1} / ${data.length}`;
-
-        document.getElementById('task').innerHTML = `
-            <table class="feature-table">
-                <tr><th>Feature</th><th>Value</th></tr>
-                <tr><td>Age</td><td>${item.age}</td></tr>
-                <tr><td>Education Number</td><td>${item.education}</td></tr>
-                <tr><td>Marital Status</td><td>${item.marital}</td></tr>
-                <tr><td>Occupation</td><td>${item.occupation}</td></tr>
-                <tr><td>Work Hours Per Week</td><td>${item.work_hours}</td></tr>
-            </table>
-            <div class="ai-section">
-                <img src="robot.png" alt="AI Advisor">
-                <div>
-                    <p><strong>AI Suggestion:</strong> ${item.ai_prediction === '1' ? '>50K' : '<=50K'}</p>
-                    <div class="gauge-container">
-                        <span><strong>AI Confidence</strong></span>
-                        <canvas id="gaugeChart" class="gauge"></canvas>
-                    </div>
-                </div>
-            </div>
-            <p>
-                <label><input type="radio" name="user_choice" value="0"> <=50K</label>
-                <label><input type="radio" name="user_choice" value="1"> >50K</label>
-            </p>
-        `;
-
-        setTimeout(() => drawGauge(parseFloat(item.ai_confidence)), 0);
-    }
-
-    function drawGauge(confidence) {
-        const ctx = document.getElementById('gaugeChart');
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Confidence', 'Remaining'],
-                datasets: [{
-                    data: [confidence, 1 - confidence],
-                    backgroundColor: ['#4CAF50', '#e0e0e0'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                cutout: '75%',
-                plugins: {
-                    tooltip: {enabled: false},
-                    legend: {display: false},
-                    title: {
-                        display: true,
-                        text: (confidence * 100).toFixed(1) + '%',
-                        position: 'bottom',
-                        font: {
-                            size: 18
-                        }
-                    }
-                }
-            }
-        });
-    }
-
-
-function submitDecision() {
-    const choice = document.querySelector('input[name="user_choice"]:checked');
-    if (!choice) {
-        alert("Please select an option before proceeding.");
-        return;
-    }
-
-    const item = data[current];
-    const userChoice = choice.value;
-    const groundTruth = item.ground_truth;
-    const aiPred = item.ai_prediction;
-
-    const log = {
-        index: current + 1,
-        ai_prediction: aiPred,
-        ai_confidence: item.ai_confidence,
-        user_choice: userChoice,
-        correct: groundTruth,
-        features: item
-    };
-
-    if (userChoice === groundTruth) {
-        correct++;
-        log.type = "Correct";
-        correctLogs.push(log);
-    } else {
-        if (aiPred !== groundTruth) {
-            overReliance++;
-            log.type = "Overreliance";
-        } else {
-            underReliance++;
-            log.type = "Underreliance";
-        }
-        errorLogs.push(log);
-    }
-
-    if (aiPred !== groundTruth) aiWrong++;
-    if (aiPred === groundTruth) aiCorrect++;
-
-    current++;
-    if (current < data.length) {
-        renderTask();
-    } else {
-        const acc = (correct / data.length * 100).toFixed(2);
-        const aiAcc = (aiCorrect / data.length * 100).toFixed(2);
-        const over = aiWrong ? (overReliance / aiWrong * 100).toFixed(2) : '0.00';
-        const under = aiCorrect ? (underReliance / aiCorrect * 100).toFixed(2) : '0.00';
-
-        const buildLogHTML = (logs, color) => logs.map(log => {
-            const f = log.features;
-            const gaugeId = `gauge_${log.type}_${log.index}`;
-            setTimeout(() => drawGaugeCustom(parseFloat(log.ai_confidence), gaugeId), 0);
-            return `
-            <details style="margin-bottom: 10px; border: 1px solid ${color}; padding: 10px; border-radius: 6px;">
-                <summary style="color: ${color}; font-weight: bold;">
-                    ${log.type} - Task ${log.index}: AI Suggested ${log.ai_prediction === '1' ? '>50K' : '<=50K'} 
-                    (Confidence: ${log.ai_confidence}), You chose ${log.user_choice === '1' ? '>50K' : '<=50K'}, Correct Answer: ${log.correct === '1' ? '>50K' : '<=50K'}
-                </summary>
-                <table class="feature-table" style="width: 60%; margin-top: 10px;">
-                    <tr><th>Feature</th><th>Value</th></tr>
-                    <tr><td>Age</td><td>${f.age}</td></tr>
-                    <tr><td>Education Number</td><td>${f.education}</td></tr>
-                    <tr><td>Marital Status</td><td>${f.marital}</td></tr>
-                    <tr><td>Occupation</td><td>${f.occupation}</td></tr>
-                    <tr><td>Work Hours Per Week</td><td>${f.work_hours}</td></tr>
-                </table>
-                <div style="margin-top: 10px;">
-                    <strong>AI Confidence</strong>
-                    <canvas id="${gaugeId}" class="gauge" style="width:200px;height:100px;"></canvas>
-                </div>
-            </details>`;
-        }).join('');
-
-        const errorHTML = buildLogHTML(errorLogs, '#e53935');
-        const correctHTML = buildLogHTML(correctLogs, '#2e7d32');
-
-        document.getElementById('task').innerHTML = '<h2>All decisions completed!</h2>';
-        document.getElementById('results').innerHTML = `
-            <p><strong>User Accuracy:</strong> ${acc}%</p>
-            <p><strong>AI Accuracy:</strong> ${aiAcc}%</p>
-            <p><strong>Overreliance:</strong> ${over}%</p>
-            <p><strong>Underreliance:</strong> ${under}%</p>
-            <h3 style="color: #2e7d32">Correct Decisions:</h3>
-            ${correctHTML}
-            <h3 style="color: #e53935">Decision Errors:</h3>
-            ${errorHTML}
-        `;
-        document.querySelector('button').style.display = 'none';
-    }
-}
-
-function drawGaugeCustom(confidence, id) {
-    const ctx = document.getElementById(id);
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Confidence', 'Remaining'],
-            datasets: [{
-                data: [confidence, 1 - confidence],
-                backgroundColor: ['#4CAF50', '#e0e0e0'],
-                borderWidth: 0
-            }]
-        },
-        options: {
-            cutout: '75%',
-            plugins: {
-                tooltip: {enabled: false},
-                legend: {display: false},
-                title: {
-                    display: true,
-                    text: (confidence * 100).toFixed(1) + '%',
-                    position: 'bottom',
-                    font: {
-                        size: 18
-                    }
-                }
-            }
-        }
-    });
-}
-
-    renderTask();
-</script>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -292,6 +11,7 @@ function drawGaugeCustom(confidence, id) {
     }
     h1 {
       color: #333;
+      text-align: center;
     }
     .feature-table {
       border-collapse: collapse;
@@ -329,6 +49,7 @@ function drawGaugeCustom(confidence, id) {
       font-size: 18px;
       margin-bottom: 15px;
       color: #666;
+      text-align: center;
     }
     .button {
       padding: 10px 20px;
@@ -347,15 +68,25 @@ function drawGaugeCustom(confidence, id) {
   </style>
 </head>
 <body>
-  <h1 style="text-align: center;">AI-Assisted Income Prediction</h1>
-  <div class="progress-counter" id="progress" style="text-align: center;"></div>
+  <h1>AI-Assisted Income Prediction</h1>
+  <div class="progress-counter" id="progress"></div>
   <div id="task"></div>
-  <button class="button" onclick="submitDecision()">Next</button>
+  <div style="text-align: center">
+    <button class="button" id="showAiBtn" onclick="showAISuggestion()">Show AI Suggestion</button>
+    <button class="button" id="submitBtn" onclick="submitFinalDecision()" style="display: none;">Submit Final Decision</button>
+  </div>
   <div id="results" style="margin-top: 30px;"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    const data = [...Array(10).keys()].map((i) => ({
+    // Initialize all state variables
+    let current = 0;
+    let initialCorrect = 0;
+    let finalCorrect = 0;
+    let overReliance = 0;
+    let underReliance = 0;
+    let logs = [];
+    const rawData = [...Array(10).keys()].map((i) => ({
   age: ['31','49','18','43','65','64','53','62','47','28'][i],
   education: ['10','9','9','14','16','13','16','10','10','13'][i],
   marital: ['Married civilian spouse','Divorced','Never married','Married civilian spouse','Married civilian spouse','Divorced','Divorced','Divorced','Divorced','Married civilian spouse'][i],
@@ -366,176 +97,174 @@ function drawGaugeCustom(confidence, id) {
   ground_truth: ['0','0','0','1','1','1','1','0','0','1'][i]
 }));
 
-let current = 0;
-let correct = 0;
-let overReliance = 0;
-let underReliance = 0;
-let aiWrong = 0;
-let aiCorrect = 0;
-const errorLogs = [], correctLogs = [];
-
-function renderTask() {
-  const item = data[current];
-  document.getElementById('progress').innerText = `Task ${current + 1} / ${data.length}`;
-  document.getElementById('task').innerHTML = `
-    <table class="feature-table">
-      <tr><th>Feature</th><th>Value</th></tr>
-      <tr><td>Age</td><td>${item.age}</td></tr>
-      <tr><td>Education Number</td><td>${item.education}</td></tr>
-      <tr><td>Marital Status</td><td>${item.marital}</td></tr>
-      <tr><td>Occupation</td><td>${item.occupation}</td></tr>
-      <tr><td>Work Hours Per Week</td><td>${item.work_hours}</td></tr>
-    </table>
-    <div class="ai-section">
-      <img src="robot.png" alt="AI Advisor">
-      <div>
-        <p><strong>AI Suggestion:</strong> ${item.ai_prediction === '1' ? '>50K' : '<=50K'}</p>
-        <div class="gauge-container">
-          <span><strong>AI Confidence</strong></span>
-          <canvas id="gaugeChart" class="gauge"></canvas>
-        </div>
-      </div>
-    </div>
-    <p style="text-align:center">
-      <label><input type="radio" name="user_choice" value="0"> <=50K</label>
-      <label><input type="radio" name="user_choice" value="1"> >50K</label>
-    </p>`;
-  setTimeout(() => drawGauge(parseFloat(item.ai_confidence)), 0);
-}
-
-function drawGauge(confidence) {
-  const ctx = document.getElementById('gaugeChart');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Confidence', 'Remaining'],
-      datasets: [{
-        data: [confidence, 1 - confidence],
-        backgroundColor: ['#4CAF50', '#e0e0e0'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      cutout: '75%',
-      plugins: {
-        tooltip: {enabled: false},
-        legend: {display: false},
-        title: {
-          display: true,
-          text: (confidence * 100).toFixed(1) + '%',
-          position: 'bottom',
-          font: { size: 18 }
-        }
-      }
-    }
-  });
-}
-
-function drawGaugeCustom(confidence, id) {
-  const ctx = document.getElementById(id);
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Confidence', 'Remaining'],
-      datasets: [{
-        data: [confidence, 1 - confidence],
-        backgroundColor: ['#4CAF50', '#e0e0e0'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      cutout: '75%',
-      plugins: {
-        tooltip: {enabled: false},
-        legend: {display: false},
-        title: {
-          display: true,
-          text: (confidence * 100).toFixed(1) + '%',
-          position: 'bottom',
-          font: { size: 18 }
-        }
-      }
-    }
-  });
-}
-
-function submitDecision() {
-  const choice = document.querySelector('input[name="user_choice"]:checked');
-  if (!choice) return alert("Please select an option before proceeding.");
-  const item = data[current];
-  const userChoice = choice.value;
-  const log = {
-    index: current + 1,
-    ai_prediction: item.ai_prediction,
-    ai_confidence: item.ai_confidence,
-    user_choice: userChoice,
-    correct: item.ground_truth,
-    features: item
-  };
-  if (userChoice === item.ground_truth) {
-    correct++;
-    log.type = "Correct";
-    correctLogs.push(log);
-  } else {
-    if (item.ai_prediction !== item.ground_truth) {
-      overReliance++;
-      log.type = "Overreliance";
-    } else {
-      underReliance++;
-      log.type = "Underreliance";
-    }
-    errorLogs.push(log);
+// Shuffle the data array
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
-  if (item.ai_prediction !== item.ground_truth) aiWrong++;
-  if (item.ai_prediction === item.ground_truth) aiCorrect++;
-  current++;
-  if (current < data.length) renderTask();
-  else showResults();
+  return array;
 }
 
-function showResults() {
-  const acc = (correct / data.length * 100).toFixed(2);
-  const aiAcc = (aiCorrect / data.length * 100).toFixed(2);
-  const over = aiWrong ? (overReliance / aiWrong * 100).toFixed(2) : '0.00';
-  const under = aiCorrect ? (underReliance / aiCorrect * 100).toFixed(2) : '0.00';
+const data = shuffle([...rawData]);
 
-  const buildLogHTML = (logs, color) => logs.map(log => {
-    const f = log.features;
-    const gaugeId = `gauge_${log.type}_${log.index}`;
-    setTimeout(() => drawGaugeCustom(parseFloat(log.ai_confidence), gaugeId), 0);
-    return `
-      <details style="margin-bottom: 10px; border: 1px solid ${color}; padding: 10px; border-radius: 6px;">
-        <summary style="color: ${color}; font-weight: bold;">
-          ${log.type} - Task ${log.index}: AI Suggested ${log.ai_prediction === '1' ? '>50K' : '<=50K'}
-          (Confidence: ${log.ai_confidence}), You chose ${log.user_choice === '1' ? '>50K' : '<=50K'}, Correct Answer: ${log.correct === '1' ? '>50K' : '<=50K'}
-        </summary>
-        <table class="feature-table" style="width: 60%; margin-top: 10px;">
+    function renderTask() {
+      const item = data[current];
+      document.getElementById('progress').innerText = `Task ${current + 1} / ${data.length}`;
+      document.getElementById('task').innerHTML = `
+        <table class="feature-table">
           <tr><th>Feature</th><th>Value</th></tr>
-          <tr><td>Age</td><td>${f.age}</td></tr>
-          <tr><td>Education Number</td><td>${f.education}</td></tr>
-          <tr><td>Marital Status</td><td>${f.marital}</td></tr>
-          <tr><td>Occupation</td><td>${f.occupation}</td></tr>
-          <tr><td>Work Hours Per Week</td><td>${f.work_hours}</td></tr>
+          <tr><td>Age</td><td>${item.age}</td></tr>
+          <tr><td>Education Number</td><td>${item.education}</td></tr>
+          <tr><td>Marital Status</td><td>${item.marital}</td></tr>
+          <tr><td>Occupation</td><td>${item.occupation}</td></tr>
+          <tr><td>Work Hours Per Week</td><td>${item.work_hours}</td></tr>
         </table>
-      </details>`;
-  }).join('');
+        <div style="text-align:center">
+          <label><input type="radio" name="initial_choice" value="0"> <=50K</label>
+          <label><input type="radio" name="initial_choice" value="1"> >50K</label>
+        </div>`;
+      document.getElementById('showAiBtn').style.display = 'block';
+      document.getElementById('submitBtn').style.display = 'none';
+    }
 
-  const errorHTML = buildLogHTML(errorLogs, '#e53935');
-  const correctHTML = buildLogHTML(correctLogs, '#2e7d32');
-  document.getElementById('task').innerHTML = '<h2>All decisions completed!</h2>';
-  document.getElementById('results').innerHTML = `
-    <p><strong>User Accuracy:</strong> ${acc}%</p>
-    <p><strong>AI Accuracy:</strong> ${aiAcc}%</p>
-    <p><strong>Overreliance:</strong> ${over}%</p>
-    <p><strong>Underreliance:</strong> ${under}%</p>
-    <h3 style="color: #2e7d32">Correct Decisions:</h3>
-    ${correctHTML}
-    <h3 style="color: #e53935">Decision Errors:</h3>
-    ${errorHTML}`;
-  document.querySelector('button').style.display = 'none';
-}
+    function showAISuggestion() {
+      const choice = document.querySelector('input[name="initial_choice"]:checked');
+      if (!choice) return alert("Please make your initial choice first.");
 
-renderTask();
+      const item = data[current];
+      const userInitChoice = choice.value;
+      if (userInitChoice === item.ground_truth) initialCorrect++;
+
+      logs.push({
+        index: current + 1,
+        initial: userInitChoice,
+        final: null,
+        ai: item.ai_prediction,
+        truth: item.ground_truth,
+        ai_conf: item.ai_confidence,
+        type: null,
+        features: item
+      });
+
+      const aiHTML = `
+        <div class="ai-section">
+          <img src="robot.png" alt="AI Advisor">
+          <div>
+            <p><strong>AI Suggestion:</strong> ${item.ai_prediction === '1' ? '>50K' : '<=50K'}</p>
+            <div class="gauge-container">
+              <span><strong>AI Confidence</strong></span>
+              <canvas id="gaugeChart" class="gauge"></canvas>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <label><input type="radio" name="final_choice" value="0"> <=50K</label>
+          <label><input type="radio" name="final_choice" value="1"> >50K</label>
+        </div>`;
+      document.getElementById('task').insertAdjacentHTML('beforeend', aiHTML);
+      drawGauge(parseFloat(item.ai_confidence));
+      document.getElementById('showAiBtn').style.display = 'none';
+      document.getElementById('submitBtn').style.display = 'inline-block';
+    }
+
+    function submitFinalDecision() {
+      const choice = document.querySelector('input[name="final_choice"]:checked');
+      if (!choice) return alert("Please make your final decision.");
+
+      const item = data[current];
+      const finalChoice = choice.value;
+      if (finalChoice === item.ground_truth) finalCorrect++;
+
+      let log = logs[logs.length - 1];
+      log.final = finalChoice;
+
+      if (log.initial === log.truth && log.ai !== log.truth && log.final !== log.truth) {
+        overReliance++;
+        log.type = 'Overreliance';
+      } else if (log.initial !== log.truth && log.ai === log.truth && log.final !== log.truth) {
+        underReliance++;
+        log.type = 'Underreliance';
+      } else {
+        log.type = (log.final === log.truth) ? 'Correct' : 'Other Error';
+      }
+
+      current++;
+      if (current < data.length) renderTask();
+      else showResults();
+    }
+
+    function showResults() {
+      const initAcc = (initialCorrect / data.length * 100).toFixed(2);
+      const finalAcc = (finalCorrect / data.length * 100).toFixed(2);
+      const over = (overReliance / data.length * 100).toFixed(2);
+      const under = (underReliance / data.length * 100).toFixed(2);
+
+      const detailsHTML = logs.map(log => {
+        const f = log.features;
+        return `
+          <details style="margin-bottom: 10px; border: 1px solid #ccc; padding: 10px; border-radius: 6px;">
+            <summary style="font-weight: bold;">
+              Task ${log.index} - ${log.type}
+              <br>Initial: ${log.initial === '1' ? '>50K' : '<=50K'}
+              | Final: ${log.final === '1' ? '>50K' : '<=50K'}
+              | AI: ${log.ai === '1' ? '>50K' : '<=50K'}
+              | Truth: ${log.truth === '1' ? '>50K' : '<=50K'}
+              | AI Conf: ${(parseFloat(log.ai_conf) * 100).toFixed(1)}%
+            </summary>
+            <table class="feature-table" style="width: 60%; margin-top: 10px;">
+              <tr><th>Feature</th><th>Value</th></tr>
+              <tr><td>Age</td><td>${f.age}</td></tr>
+              <tr><td>Education Number</td><td>${f.education}</td></tr>
+              <tr><td>Marital Status</td><td>${f.marital}</td></tr>
+              <tr><td>Occupation</td><td>${f.occupation}</td></tr>
+              <tr><td>Work Hours Per Week</td><td>${f.work_hours}</td></tr>
+            </table>
+          </details>`;
+      }).join('');
+
+      document.getElementById('task').innerHTML = '<h2>All decisions completed!</h2>';
+      document.getElementById('results').innerHTML = `
+        <p><strong>AI's Accuracy:</strong> 70%</p>
+        <p><strong>Initial Accuracy:</strong> ${initAcc}%</p>
+        <p><strong>Final Accuracy:</strong> ${finalAcc}%</p>
+        <p><strong>Overreliance:</strong> ${over}%</p>
+        <p><strong>Underreliance:</strong> ${under}%</p>
+        <h3>Decision Log</h3>
+        ${detailsHTML}`;
+      document.getElementById('showAiBtn').style.display = 'none';
+      document.getElementById('submitBtn').style.display = 'none';
+    }
+
+    function drawGauge(confidence) {
+      const ctx = document.getElementById('gaugeChart');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Confidence', 'Remaining'],
+          datasets: [{
+            data: [confidence, 1 - confidence],
+            backgroundColor: ['#4CAF50', '#e0e0e0'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          cutout: '75%',
+          plugins: {
+            tooltip: {enabled: false},
+            legend: {display: false},
+            title: {
+              display: true,
+              text: (confidence * 100).toFixed(1) + '%',
+              position: 'bottom',
+              font: { size: 18 }
+            }
+          }
+        }
+      });
+    }
+
+    renderTask();
   </script>
 </body>
 </html>
