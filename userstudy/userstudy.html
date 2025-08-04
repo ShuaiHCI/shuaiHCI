@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Study Frontend</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #taskDescription {
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        #taskDescription img#taskIllustration {
+            display: block;
+            margin: 15px auto;
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        #agentLegend {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #444;
+        }
+
+        #agentLegend img {
+            width: 50px;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        #stepCounter {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px auto 10px auto;
+            padding: 10px 20px;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            display: inline-block;
+            color: #007BFF;
+            background-color: #f0f8ff;
+        }
+
+        canvas#gameCanvas {
+            border: 2px solid black;
+            display: block;
+            margin: 10px auto;
+        }
+
+        #restartButton {
+            font-size: 16px;
+            padding: 8px 16px;
+            margin: 10px auto 20px auto;
+            display: block;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+
+        #scenarioDescription {
+            background-color: #fff9e6;
+            border-left: 6px solid #f0ad4e;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px 25px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #333;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        #scenarioDescription h2 {
+            margin-top: 0;
+            color: #d58512;
+            font-size: 22px;
+        }
+
+        #scenarioDescription ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+
+    </style>
+</head>
+
+
+<body>
+    <h1>User Study Frontend Control</h1>
+
+    <!-- Scenario Section -->
+    <div id="scenarioDescription">
+        <h2>Scenario 1: Efficient Solo Preparation</h2>
+        <p>
+            You are participating in a time-constrained kitchen simulation. Your primary goal is to prepare as many lettuce salads as possible <strong>on your own</strong>.
+        </p>
+        <p>
+            There is another robot agent in the kitchen, but you are <strong>not required to collaborate</strong> or coordinate with it. The robot will perform its own tasks independently. You should focus entirely on maximizing your own salad output within the given number of steps.
+        </p>
+        <p>
+            To help clear space in the kitchen, the management has encouraged participants to first utilize any available <strong><em>bad lettuce</em></strong> <img src="static/images/BadLettuce.png" alt="Bad Lettuce" style="width:32px; vertical-align:middle; margin-left:5px; margin-right:5px;">
+            for salad preparation.. Using bad lettuce is perfectly acceptable in this scenario — your focus is on speed and efficiency, not perfect quality.
+        </p>
+        <p>
+            <strong>Key points:</strong>
+            <ul>
+                <li>Focus only on your own task — do not attempt to assist the robot.</li>
+                <li>Prioritize using <em>bad lettuce</em> when available.</li>
+                <li>Your goal is to maximize your personal salad count within 200 steps.</li>
+            </ul>
+        </p>
+    </div>
+
+
+    <!-- Task Description Section -->
+    <div id="taskDescription">
+        <p>
+            <strong>Your task is to collaborate with a robot agent to complete as many dishes as possible within a limited number of steps (200 steps).</strong><br>
+            The target dish is a simple <em>lettuce salad</em>. To prepare it, follow these steps: pick up a fresh lettuce, chop it on the cutting board, place the chopped lettuce onto a plate, and finally deliver the plate to the serving station.<br>
+            The task workflow is illustrated below:
+        </p>
+        <img id="taskIllustration" src="static/images/task_illustration.png" alt="Task Illustration">
+        <div id="agentLegend">
+            You are <img src="static/images/agent-blue.png" alt="Agent Blue"> 
+            &nbsp;&nbsp;&nbsp;&nbsp; Your robot partner is <img src="static/images/agent-robot.png" alt="Agent Robot">
+        </div>
+        <p style="text-align: center; margin-top: 15px; font-weight: bold; font-size: 18px; color: #222;">
+            Use your arrow keys to start!
+        </p>
+    </div>
+
+    <!-- Steps Remaining Display (placed ABOVE canvas) -->
+    <div id="stepCounter">
+        Steps Remaining: <span id="stepsLeft">200</span>
+    </div>
+
+    <!-- Restart Button -->
+    <button id="restartButton">Restart Task</button>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- 引用外部JS -->
+    <script src="static/js/userstudy.js"></script>
+
+
+</body>
+</html>
