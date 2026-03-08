@@ -126,42 +126,43 @@
       box-shadow: 0 12px 28px rgba(25,39,70,0.12);
     }
 
-/* ===== Recruitment Card ===== */
+
+    /* ===== Recruitment Card ===== */
 
 .announcement {
-  padding: 22px 0 8px;
+  padding: 14px 0 4px;
 }
 
 .announcement-card {
   background: linear-gradient(135deg, rgba(34,81,204,0.06), rgba(91,124,255,0.10));
   border: 1px solid rgba(34,81,204,0.12);
-  border-radius: 26px;
-  padding: 28px 30px;
-  box-shadow: 0 18px 44px rgba(34,81,204,0.08);
+  border-radius: 20px;
+  padding: 20px 22px;
+  box-shadow: 0 12px 30px rgba(34,81,204,0.07);
 }
 
 .announcement-header {
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 .announcement-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
+  gap: 6px;
+  padding: 6px 12px;
   border-radius: 999px;
   background: rgba(34,81,204,0.10);
   color: var(--primary);
   font-weight: 800;
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .announcement-header h2 {
-  margin: 0 0 10px 0;
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 8px 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   line-height: 1.2;
   letter-spacing: -0.03em;
   color: var(--text);
@@ -169,81 +170,83 @@
 
 .announcement-header p {
   margin: 0;
-  max-width: 900px;
-  font-size: 1rem;
-  line-height: 1.75;
+  max-width: 860px;
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: var(--muted);
 }
 
 .announcement-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 14px;
 }
 
 .announcement-block {
   background: rgba(255,255,255,0.82);
   border: 1px solid rgba(255,255,255,0.7);
-  border-radius: 20px;
-  padding: 18px 18px 20px;
-  box-shadow: 0 10px 28px rgba(22,35,63,0.05);
+  border-radius: 16px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 8px 20px rgba(22,35,63,0.04);
 }
 
 .announcement-block h3 {
-  margin: 0 0 12px 0;
-  font-size: 1rem;
+  margin: 0 0 8px 0;
+  font-size: 0.92rem;
   color: var(--text);
   letter-spacing: -0.02em;
 }
 
 .announcement-block ul {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 16px;
   color: var(--muted);
 }
 
 .announcement-block li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .announcement-block p {
   margin: 0;
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.55;
+  font-size: 0.88rem;
 }
 
 .announcement-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
 }
 
 .announcement-tags span {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: rgba(34,81,204,0.08);
   border: 1px solid rgba(34,81,204,0.12);
   color: var(--primary);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
 .announcement-email-tag {
   display: inline-block;
-  margin-top: 12px;
-  padding: 10px 14px;
-  border-radius: 12px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
   background: #ffffff;
   border: 1px solid rgba(34,81,204,0.15);
   color: var(--primary);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  box-shadow: 0 8px 20px rgba(34,81,204,0.06);
+  box-shadow: 0 6px 16px rgba(34,81,204,0.05);
 }
-
 
 
 
@@ -755,6 +758,248 @@
       padding-top: 20px;
     }
 
+
+@media (max-width: 1920px) {
+  :root {
+    --maxw: 1120px;
+    --radius-xl: 20px;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --shadow: 0 14px 34px rgba(22, 35, 63, 0.08);
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .container {
+    width: min(calc(100% - 28px), var(--maxw));
+  }
+
+  .topbar-inner {
+    min-height: 66px;
+    gap: 16px;
+  }
+
+  .brand-title {
+    font-size: 1.35rem;
+  }
+
+  .brand-subtitle,
+  .nav a {
+    font-size: 0.85rem;
+  }
+
+  .social a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .announcement {
+    padding: 16px 0 6px;
+  }
+
+  .announcement-card {
+    padding: 22px 24px;
+    border-radius: 22px;
+  }
+
+  .announcement-header h2 {
+    font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+  }
+
+  .announcement-header p,
+  .announcement-block p,
+  .announcement-block li {
+    font-size: 0.92rem;
+  }
+
+  .announcement-block {
+    padding: 15px 16px 17px;
+    border-radius: 16px;
+  }
+
+  .announcement-tags span,
+  .announcement-email-tag {
+    font-size: 0.82rem;
+  }
+
+  .hero {
+    padding: 28px 0 18px;
+  }
+
+  .hero-grid {
+    gap: 22px;
+  }
+
+  .hero-card {
+    padding: 26px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.85rem, 3.6vw, 2.8rem);
+  }
+
+  .hero p.lead {
+    font-size: 0.96rem;
+    margin-bottom: 14px;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+  }
+
+  .hero-points {
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .point {
+    padding: 13px 15px;
+  }
+
+  .point strong,
+  .point span {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 10px 15px;
+    font-size: 0.88rem;
+  }
+
+  .profile-card {
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .meta-item {
+    padding: 10px 12px;
+  }
+
+  .meta-label {
+    font-size: 0.68rem;
+  }
+
+  .meta-value {
+    font-size: 0.88rem;
+  }
+
+  .highlights {
+    padding: 4px 0 2px;
+  }
+
+  .highlight-grid {
+    gap: 14px;
+  }
+
+  .highlight-card {
+    padding: 16px;
+  }
+
+  .highlight-card i {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 10px;
+  }
+
+  .highlight-card h3 {
+    font-size: 0.94rem;
+  }
+
+  .highlight-card p {
+    font-size: 0.86rem;
+  }
+
+  .main-layout {
+    gap: 20px;
+    padding: 14px 0 28px;
+  }
+
+  .section-card,
+  .sidebar-card {
+    padding: 20px;
+  }
+
+  .section-heading h2,
+  .sidebar-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .section-intro {
+    font-size: 0.92rem;
+    margin-bottom: 16px;
+  }
+
+  .research-figure {
+    margin-bottom: 18px;
+  }
+
+  .filter-bar {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .chip {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .pub-list {
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 18px;
+  }
+
+  .pub-media {
+    min-height: 200px;
+    padding: 14px;
+  }
+
+  .pub-media img {
+    max-height: 220px;
+  }
+
+  .pub-content {
+    padding: 16px 18px 18px;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    padding: 5px 9px;
+  }
+
+  .pub-title {
+    font-size: 1rem;
+  }
+
+  .pub-authors,
+  .pub-desc {
+    font-size: 0.88rem;
+  }
+
+  .pub-links {
+    gap: 8px;
+  }
+
+  .pub-links a {
+    padding: 7px 11px;
+    font-size: 0.8rem;
+  }
+
+  .timeline li,
+  .simple-list li {
+    font-size: 0.88rem;
+    padding-left: 14px;
+  }
+
+  .muted-note,
+  .footer {
+    font-size: 0.84rem;
+  }
+}
     @media (max-width: 1080px) {
       .hero-grid,
       .main-layout,
@@ -891,10 +1136,8 @@
     <section class="hero" id="about">
       <div class="container hero-grid">
         <article class="hero-card">
-          <div class="eyebrow"><i class="fa-solid fa-sparkles"></i> Academic Homepage</div>
-          <h1>Designing human-aware AI for stronger human–AI teamwork.</h1>
           <p class="lead">
-            I am currently an Associate Professor at Institute of Software, Chinese Academy of Sciences (ISCAS). Before joining ISCAS, I was a Postdoctoral Researcher at the <a href="https://cbl.aalto.fi/">Computational Behavior Lab</a>, Aalto University, where I worked with <a href="https://users.aalto.fi/~oulasvir/">Prof. Antti Oulasvirta</a>. Previously, I received my PhD from the HCI Lab at the <a href="https://hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a>, where I was advised by <a href="https://www.cse.ust.hk/~mxj/">Prof. Xiaojuan Ma</a>.
+            I am an Associate Professor at Institute of Software, Chinese Academy of Sciences (ISCAS). Before joining ISCAS, I was a Postdoctoral Researcher at the <a href="https://cbl.aalto.fi/">Computational Behavior Lab</a> of Aalto University and <a href="https://fcai.fi/">Finnish AI Center</a>, where I worked with <a href="https://users.aalto.fi/~oulasvir/">Prof. Antti Oulasvirta</a>. Previously, I received my PhD from the HCI Lab at the <a href="https://hkust.edu.hk/">Hong Kong University of Science and Technology (HKUST)</a>, where I was advised by <a href="https://www.cse.ust.hk/~mxj/">Prof. Xiaojuan Ma</a>.
           </p>
           <p class="lead">
             My research lies in human-computer interaction, with a particular emphasis on human-AI collaboration systems that advance hybrid intelligence and improve complementary team performance. I study both <strong>fundamental mechanisms</strong> and <strong>interactive systems</strong> for human-aware AI.
@@ -923,7 +1166,7 @@
           <div class="portrait-wrap">
             <img src="./personal_webpage_files/Me.jpg" alt="Portrait of Shuai Ma">
           </div>
-          <div class="profile-meta">
+          <!-- <div class="profile-meta">
             <div class="meta-item">
               <span class="meta-label">Current Role</span>
               <span class="meta-value">Associate Professor</span>
@@ -940,7 +1183,7 @@
               <span class="meta-label">Focus</span>
               <span class="meta-value">Human-AI Collaboration</span>
             </div>
-          </div>
+          </div> -->
         </aside>
       </div>
     </section>
@@ -990,9 +1233,8 @@
             <button class="chip active" data-filter="Selected">Selected</button>
             <button class="chip" data-filter="All">All</button>
             <button class="chip" data-filter="Decision Making">AI for Decision Making</button>
-            <button class="chip" data-filter="Large Language Model">Large Language Model</button>
-            <button class="chip" data-filter="Education">AI for Education</button>
             <button class="chip" data-filter="Wellbeing">AI for Healthcare & Wellbeing</button>
+            <button class="chip" data-filter="Education">AI for Education</button>
             <button class="chip" data-filter="Work">AI for Work & Creation</button>
             <button class="chip" data-filter="Social Science">AI for Social Science</button>
             <button class="chip" data-filter="Science">AI for Science</button>
@@ -1004,7 +1246,7 @@
 
 
         
-            <article class="pub-card research-project" data-category="Large Language Model,Human-AI Collaboration,All,Work">
+            <article class="pub-card research-project" data-category="Human-AI Collaboration,All,Work">
               <div class="pub-media"><img src="./personal_webpage_files/paper_teaser/APE.png" alt="Adaptive Prompt Elicitation for Text-to-Image Generation"></div>
               <div class="pub-content">
                 <div class="pub-topline">
@@ -1036,7 +1278,7 @@
             </article>
 
 
-            <article class="pub-card research-project" data-category="Large Language Model,Human-AI Collaboration,All,Wellbeing,Social Science">
+            <article class="pub-card research-project" data-category="Human-AI Collaboration,All,Wellbeing,Social Science">
               <div class="pub-media"><img src="./personal_webpage_files/paper_teaser/Echo_of_norms.png" alt="Echoes of Norms"></div>
               <div class="pub-content">
                 <div class="pub-topline">
@@ -1052,7 +1294,7 @@
             </article>
 
 
-            <article class="pub-card research-project" data-category="Large Language Model,Human-AI Collaboration,All,Social Science">
+            <article class="pub-card research-project" data-category="Human-AI Collaboration,All,Social Science">
               <div class="pub-media"><img src="./personal_webpage_files/paper_teaser/Digdeeper.png" alt="Echoes of Norms"></div>
               <div class="pub-content">
                 <div class="pub-topline">
@@ -1083,7 +1325,7 @@
               </div>
             </article>
 
-            <article class="pub-card research-project" data-category="Decision Making,Large Language Model,Human-AI Collaboration,All,Selected">
+            <article class="pub-card research-project" data-category="Decision Making,Human-AI Collaboration,All,Selected">
               <div class="pub-media"><img src="./personal_webpage_files/paper_teaser/deliberation.png" alt="Towards Human-AI Deliberation"></div>
               <div class="pub-content">
                 <div class="pub-topline">
@@ -1132,7 +1374,7 @@
             </article>
 
 
-            <article class="pub-card research-project" data-category="All,Selected,Education,Large Language Model">
+            <article class="pub-card research-project" data-category="All,Selected,Education">
               <div class="pub-media"><img src="./personal_webpage_files/paper_teaser/DBox.png" alt="DBox"></div>
               <div class="pub-content">
                 <div class="pub-topline">
