@@ -8,10 +8,20 @@ let activeCategory = 'Selected';
 let previousQuery = '';
 
 const normalize = value => value.normalize('NFKC').toLocaleLowerCase().trim();
+const areaKeywords = {
+  'User Modeling': 'user modeling understanding personalization human intent 用户建模 用户理解 用户建模与理解',
+  'Trust Calibration': 'human AI trust calibration reliance confidence 人机信任 信任校准 人机信任校准',
+  'Explainable AI': 'explainability explanations XAI 可解释性 可解释人工智能',
+  'Human-AI Collaboration': 'human–AI collaboration hybrid intelligence human machine collaboration 人机协同 人机协作 人智协同 混合智能',
+  'AI4Science / Social Science': 'AI4Science AI4SocialScience science social science scientific discovery AI科学 科学发现 社会科学'
+};
 const publicationIndex = publications.map(publication => ({
   element: publication,
   categories: publication.dataset.category.split(',').map(normalize),
-  text: normalize(['.pub-title', '.pub-authors', '.pub-topline'].map(selector => publication.querySelector(selector).textContent).join(' '))
+  text: normalize([
+    ...['.pub-title', '.pub-authors', '.pub-topline', '.pub-topics'].map(selector => publication.querySelector(selector).textContent),
+    ...publication.dataset.category.split(',').map(category => areaKeywords[category.trim()] || '')
+  ].join(' '))
 }));
 
 function applyFilter(category = activeCategory) {
@@ -34,14 +44,14 @@ function applyFilter(category = activeCategory) {
   });
 
   const noun = visibleCount === 1 ? 'publication' : 'publications';
-  const scope = category === 'Selected' ? 'selected' : category === 'All' ? 'in the archive' : `in ${category.toLowerCase()}`;
-  publicationCount.textContent = `${String(visibleCount).padStart(2, '0')} ${noun} ${scope}${query ? ' matching your search' : ''}`;
+  const scope = category === 'Selected' ? 'Selected work' : category === 'All' ? 'Full archive' : category;
+  publicationCount.textContent = `${visibleCount} ${noun} · ${scope}${query ? ' · Matching your search' : ''}`;
   emptyState.hidden = visibleCount > 0;
 }
 
 filters.forEach(filter => filter.addEventListener('click', () => applyFilter(filter.dataset.filter)));
 searchInput.addEventListener('input', () => {
-  // Start each new search across the full archive, then allow topic refinement.
+  // Start each new search across the full archive, then allow research-area refinement.
   const query = normalize(searchInput.value);
   if (query && !previousQuery) activeCategory = 'All';
   previousQuery = query;
