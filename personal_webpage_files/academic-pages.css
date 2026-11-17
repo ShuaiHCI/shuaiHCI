@@ -52,6 +52,8 @@ main.shell { padding-block: clamp(2.15rem, 4.5vw, 3.8rem) 1rem; min-height: 72vh
 .reading { max-width: 74ch; min-width: 0; }
 .standalone { margin-inline: auto; }
 .reading section + section, .standalone > section { margin-top: 2.15rem; }
+.research-directions { margin-top: .85rem; padding-inline-start: 1.4em; }
+.research-directions li + li { margin-top: .65rem; }
 .projects dt { font-size: 1.19rem; font-weight: 620; line-height: 1.45; }
 .projects dd { margin-top: .22rem; }
 .projects dd + dt { margin-top: 1.1rem; }
